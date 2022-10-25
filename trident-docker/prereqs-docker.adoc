@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/prereqs-docker.html 
+keywords: deploy, astra trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config 
+summary: Trident を導入するには、必要なプロトコルをホストにインストールして設定しておく必要があります。 
+---
+= 導入の前提条件
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+Trident を導入するには、必要なプロトコルをホストにインストールして設定しておく必要があります。
+
+* の導入がすべてを満たしていることを確認します link:../trident-get-started/requirements.html["要件"^]。
+* サポートされているバージョンの Docker がインストールされていることを確認します。Docker のバージョンが最新でない場合は、 https://docs.docker.com/engine/install/["インストールまたは更新します"^]。
+
+
+[listing]
+----
+docker --version
+----
+* プロトコルの前提条件がホストにインストールされ、設定されていることを確認します。
+
+
+[cols="3*"]
+|===
+| プロトコル | オペレーティングシステム | コマンド 
+
+
+| NFS  a| 
+RHEL / CentOS 7.
+ a| 
+`sudo yum install -y nfs-utils`
+
+
+
+| NFS  a| 
+Ubuntu
+ a| 
+`sudo apt-get install -y nfs-common`
+
+
+
+| iSCSI  a| 
+RHEL / CentOS 7.
+ a| 
+. 次のシステムパッケージをインストールします。
++
+`sudo yum install -y lsscsi iscsi-initiator-utils sg3_utils device-mapper-multipath`
+
+. マルチパスデーモンを開始します。
++
+`sudo mpathconf --enable --with_multipathd y`
+
+. を確認します `iscsid` および `multipathd` 有効になっていて実行中：
++
+`sudo systemctl enable iscsid multipathd`
+`sudo systemctl start iscsid multipathd`
+
+. iSCSI ターゲットを検出します。
++
+`sudo iscsiadm -m discoverydb -t st -p <DATA_LIF_IP> --discover`
+
+. 検出された iSCSI ターゲットにログインします。
++
+`sudo iscsiadm -m node -p <DATA_LIF_IP> --login`
+
+. を有効にして開始します `iscsi`：
++
+`sudo systemctl enable iscsi`
+`sudo systemctl start iscsi`
+
+
+
+
+
+| iSCSI  a| 
+Ubuntu
+ a| 
+. 次のシステムパッケージをインストールします。
++
+`sudo apt-get install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools`
+
+. マルチパスを有効化：
++
+`sudo tee /etc/multipath.conf <<-'EOF'
+defaults {
+    user_friendly_names yes
+    find_multipaths yes
+}
+EOF
+sudo service multipath-tools restart`
+
+. を確認します `iscsid` および `multipathd` 実行中：
++
+`sudo service open-iscsi start
+sudo service multipath-tools start`
+
+. iSCSI ターゲットを検出します。
++
+`sudo iscsiadm -m discoverydb -t st -p <DATA_LIF_IP> --discover`
+
+. 検出された iSCSI ターゲットにログインします。
++
+`sudo iscsiadm -m node -p <DATA_LIF_IP> --login`
+
+
+
+|===
