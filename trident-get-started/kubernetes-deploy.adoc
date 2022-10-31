@@ -18,6 +18,12 @@ NOTE: 22.04 リリース以降、 Astra Trident がインストールされる�
 
 
 
+== Kubernetes 1.25に関する重要な情報
+
+Kubernetes 1.25はAstra Trident 22.10でサポートされています。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
+
+
+
 == 導入方法を選択します
 
 使用する導入方法を決定するには、次の点を考慮してください。

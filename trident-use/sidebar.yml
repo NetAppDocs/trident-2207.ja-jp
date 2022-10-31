@@ -2,8 +2,6 @@
 section: trident-use
 title: Astra Trident を使用
 entries:
-- title: ワーカーノードを準備します
-  url: "/trident-use/worker-node-prep.html"
 - title: バックエンドを設定
   url: "/trident-use/backends.html"
   entries:
@@ -50,5 +48,7 @@ entries:
     url: "/trident-use/vol-expansion.html"
   - title: ボリュームをインポート
     url: "/trident-use/vol-import.html"
+- title: ワーカーノードを準備します
+  url: "/trident-use/worker-node-prep.html"
 - title: Astra Trident を監視
   url: "/trident-use/monitor-trident.html"

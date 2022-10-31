@@ -3291,4 +3291,7 @@
   <block id="324fb1352ffffb105d10013810c42896" category="sidebar">Kubernetes と Astra Trident オブジェクト</block>
   <block id="cc4a0df2c635530d752308ab5a1c4b89" category="sidebar">ANF バックエンドを設定します</block>
   <block id="c949166d6970748c0094c800daa3324a" category="sidebar">Trident で Astra を管理</block>
+  <block id="dfc322d478fc59cd6375362d8dad7bc0" category="section-title">Kubernetes 1.25に関する重要な情報</block>
+  <block id="8ecd31edb9e56b6612383d3a68cf1025" category="paragraph">Kubernetes 1.25はAstra Trident 22.10でサポートされています。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。</block>
+  <block id="95390d9ff012ccbe3d3eeff435de47d2" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Kubernetes 1.25に関する重要な情報の要件をお読みください**</block>
 </blocks>
