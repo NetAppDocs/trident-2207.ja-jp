@@ -1539,7 +1539,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-10-25 16:20:42 +0000">10/25/2022</time>
+    <time datetime="2022-11-09 17:36:42 +0000">11/09/2022</time>
     
   
 
@@ -1620,35 +1620,45 @@
 </div>
 </li>
 <li>
-<p>マルチパスデーモンを開始します。</p>
+<p>iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。</p>
 <div class="paragraph">
-<p><code>sudo mpathconf --enable --with_multipathd y</code></p>
+<p><code>rpm -q iscsi-initiator-utils</code></p>
 </div>
 </li>
 <li>
-<p>を確認します <code>iscsid</code> および <code>multipathd</code> 有効になっていて実行中：</p>
+<p>スキャンを手動に設定：</p>
 <div class="paragraph">
-<p><code>sudo systemctl enable iscsid multipathd</code><br>
-<code>sudo systemctl start iscsid multipathd</code></p>
+<p><code>sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf</code></p>
 </div>
 </li>
 <li>
-<p>iSCSI ターゲットを検出します。</p>
+<p>マルチパスを有効化：</p>
 <div class="paragraph">
-<p><code>sudo iscsiadm -m discoverydb -t st -p &lt;DATA_LIF_IP&gt; --discover</code></p>
+<p><code>sudo mpathconf --enable --with_multipathd y --find_multipaths n</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/trident-2207/images/note.svg" alt="注記">
+</td>
+<td class="content">
+確認します <code>etc/multipath.conf</code> が含まれます <code>find_multipaths no</code> の下 <code>defaults</code>。
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
-<p>検出された iSCSI ターゲットにログインします。</p>
+<p>を確認します <code>iscsid</code> および <code>multipathd</code> 実行中：</p>
 <div class="paragraph">
-<p><code>sudo iscsiadm -m node -p &lt;DATA_LIF_IP&gt; --login</code></p>
+<p><code>sudo systemctl enable --now iscsid multipathd</code></p>
 </div>
 </li>
 <li>
 <p>を有効にして開始します <code>iscsi</code>：</p>
 <div class="paragraph">
-<p><code>sudo systemctl enable iscsi</code><br>
-<code>sudo systemctl start iscsi</code></p>
+<p><code>sudo systemctl enable --now iscsi</code></p>
 </div>
 </li>
 </ol>
@@ -1668,34 +1678,48 @@
 </div>
 </li>
 <li>
+<p>open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。</p>
+<div class="paragraph">
+<p><code>dpkg -l open-iscsi</code></p>
+</div>
+</li>
+<li>
+<p>スキャンを手動に設定：</p>
+<div class="paragraph">
+<p><code>sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf</code></p>
+</div>
+</li>
+<li>
 <p>マルチパスを有効化：</p>
 <div class="paragraph">
 <p><code>sudo tee /etc/multipath.conf &lt;&#8592;'EOF'<br>
 defaults {<br>
     user_friendly_names yes<br>
-    find_multipaths yes<br>
+    find_multipaths no<br>
 }<br>
 EOF<br>
+sudo systemctl enable --now multipath-tools.service<br>
 sudo service multipath-tools restart</code></p>
 </div>
-</li>
-<li>
-<p>を確認します <code>iscsid</code> および <code>multipathd</code> 実行中：</p>
-<div class="paragraph">
-<p><code>sudo service open-iscsi start<br>
-sudo service multipath-tools start</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/trident-2207/images/note.svg" alt="注記">
+</td>
+<td class="content">
+確認します <code>etc/multipath.conf</code> が含まれます <code>find_multipaths no</code> の下 <code>defaults</code>。
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
-<p>iSCSI ターゲットを検出します。</p>
+<p>を確認します <code>open-iscsi</code> および <code>multipath-tools</code> 有効になっていて実行中：</p>
 <div class="paragraph">
-<p><code>sudo iscsiadm -m discoverydb -t st -p &lt;DATA_LIF_IP&gt; --discover</code></p>
-</div>
-</li>
-<li>
-<p>検出された iSCSI ターゲットにログインします。</p>
-<div class="paragraph">
-<p><code>sudo iscsiadm -m node -p &lt;DATA_LIF_IP&gt; --login</code></p>
+<p><code>sudo systemctl status multipath-tools</code><br>
+<code>sudo systemctl enable --now open-iscsi.service</code><br>
+<code>sudo systemctl status open-iscsi</code></p>
 </div>
 </li>
 </ol>
