@@ -50,27 +50,29 @@ RHEL / CentOS 7.
 +
 `sudo yum install -y lsscsi iscsi-initiator-utils sg3_utils device-mapper-multipath`
 
-. マルチパスデーモンを開始します。
+. iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。
 +
-`sudo mpathconf --enable --with_multipathd y`
+`rpm -q iscsi-initiator-utils`
 
-. を確認します `iscsid` および `multipathd` 有効になっていて実行中：
+. スキャンを手動に設定：
 +
-`sudo systemctl enable iscsid multipathd`
-`sudo systemctl start iscsid multipathd`
+`sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf`
 
-. iSCSI ターゲットを検出します。
+. マルチパスを有効化：
 +
-`sudo iscsiadm -m discoverydb -t st -p <DATA_LIF_IP> --discover`
+`sudo mpathconf --enable --with_multipathd y --find_multipaths n`
 
-. 検出された iSCSI ターゲットにログインします。
 +
-`sudo iscsiadm -m node -p <DATA_LIF_IP> --login`
+
+NOTE: 確認します `etc/multipath.conf` が含まれます `find_multipaths no` の下 `defaults`。
+
+. を確認します `iscsid` および `multipathd` 実行中：
++
+`sudo systemctl enable --now iscsid multipathd`
 
 . を有効にして開始します `iscsi`：
 +
-`sudo systemctl enable iscsi`
-`sudo systemctl start iscsi`
+`sudo systemctl enable --now iscsi`
 
 
 
@@ -83,28 +85,34 @@ Ubuntu
 +
 `sudo apt-get install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools`
 
+. open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。
++
+`dpkg -l open-iscsi`
+
+. スキャンを手動に設定：
++
+`sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf`
+
 . マルチパスを有効化：
 +
 `sudo tee /etc/multipath.conf <<-'EOF'
 defaults {
     user_friendly_names yes
-    find_multipaths yes
+    find_multipaths no
 }
 EOF
+sudo systemctl enable --now multipath-tools.service
 sudo service multipath-tools restart`
 
-. を確認します `iscsid` および `multipathd` 実行中：
 +
-`sudo service open-iscsi start
-sudo service multipath-tools start`
 
-. iSCSI ターゲットを検出します。
-+
-`sudo iscsiadm -m discoverydb -t st -p <DATA_LIF_IP> --discover`
+NOTE: 確認します `etc/multipath.conf` が含まれます `find_multipaths no` の下 `defaults`。
 
-. 検出された iSCSI ターゲットにログインします。
+. を確認します `open-iscsi` および `multipath-tools` 有効になっていて実行中：
 +
-`sudo iscsiadm -m node -p <DATA_LIF_IP> --login`
+`sudo systemctl status multipath-tools`
+`sudo systemctl enable --now open-iscsi.service`
+`sudo systemctl status open-iscsi`
 
 
 
