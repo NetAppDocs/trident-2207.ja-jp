@@ -16,6 +16,7 @@ summary: Cloud Volumes Service for Google Cloud を Astra Trident のバック�
 
 NOTE: NetApp Cloud Volumes Service for Google Cloud では、サイズが 100GiB 未満の CVS パフォーマンスボリュームや 300GiB 未満の CVS ボリュームはサポートされていません。Trident は、要求されたボリュームが最小サイズより小さい場合、最小サイズのボリュームを自動的に作成します。
 
+.必要なもの
 を設定して使用します https://cloud.netapp.com/cloud-volumes-service-for-gcp?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident["Cloud Volumes Service for Google Cloud"^] バックエンドには次のものが必要です。
 
 * ネットアップ CVS で設定された Google Cloud アカウント

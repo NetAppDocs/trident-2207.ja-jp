@@ -237,7 +237,7 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 
 
 
-=== 証明書ベースの認証を使用する ONTAP -SAN ドライバ
+=== `ontap-san` 証明書ベースの認証を使用するドライバ
 
 これは、バックエンドの最小限の設定例です。 `clientCertificate`、 `clientPrivateKey`および `trustedCACertificate` （信頼されたCAを使用している場合はオプション）がに入力されます `backend.json` およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。
 
@@ -263,7 +263,7 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 ----
 
 
-=== 双方向 CHAP を使用する ONTAP と SAN のドライバ
+=== `ontap-san` 双方向CHAPを備えたドライバ
 
 これは、バックエンドの最小限の設定例です。この基本設定では、が作成されます `ontap-san` バックエンドの指定 `useCHAP` をに設定します `true`。
 
@@ -288,7 +288,7 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 ----
 
 
-=== ONTAP - SAN エコノミードライバ
+=== `ontap-san-economy` ドライバ
 
 [listing]
 ----

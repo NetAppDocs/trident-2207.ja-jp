@@ -101,7 +101,7 @@ Trident 19.07 以降では、 PVS の添付ファイルを処理し、ボリュ�
 
 
 
-== ONTAP-NAS および ONTAP-NAS-flexgroup のインポート
+== `ontap-nas` および `ontap-nas-flexgroup` インポート
 
 を使用して作成した各ボリューム `ontap-nas` driverはONTAP クラスタ上のFlexVol です。を使用してFlexVolをインポートする `ontap-nas` ドライバも同じように動作します。ONTAP クラスタにすでに存在するFlexVol は、としてインポートできます `ontap-nas` PVC。同様に、FlexGroup ボリュームはとしてインポートできます `ontap-nas-flexgroup` PVC
 
@@ -142,7 +142,7 @@ NOTE: UnixPermissions カスタムのボリュームをインポートすると�
 
 
 
-== ontap - SAN インポート
+== `ontap-san` インポート
 
 Astra Trident は、 1 つの LUN を含む ONTAP SAN FlexVol をインポートすることもできます。これはと同じです `ontap-san` ドライバ。FlexVol 内の各PVCおよびLUNにFlexVol を作成します。を使用できます `tridentctl import` 他の場合と同様にコマンドを実行します。
 
@@ -181,7 +181,7 @@ IMPORTANT: ONTAP ボリュームのタイプが RW であることが Astra Trid
 
 
 
-== エレメントをインポートします
+== `element` インポート
 
 Trident を使用して、 NetApp Element ソフトウェア / NetApp HCI ボリュームを Kubernetes クラスタにインポートできます。必要に応じて、Astra Tridentバックエンドの名前、ボリュームとPVCファイルの一意の名前をの引数として指定します `tridentctl import` コマンドを実行します
 
@@ -200,7 +200,7 @@ NOTE: Element ドライバではボリューム名の重複がサポートされ
 
 
 
-== GCP-cvs インポート
+== `gcp-cvs` インポート
 
 
 TIP: GCP の NetApp Cloud Volumes Service から作成されたボリュームをインポートするには、名前ではなくボリュームパスでボリュームを特定します。
@@ -222,7 +222,7 @@ NOTE: ボリュームパスは、 / のあとのボリュームのエクスポ�
 
 
 
-== azure-NetApp-files インポート
+== `azure-netapp-files` インポート
 
 をインポートします `azure-netapp-files` バックエンドのボリュームの名前はです `azurenetappfiles_40517` を指定します `importvol1`を使用して、次のコマンドを実行します。
 

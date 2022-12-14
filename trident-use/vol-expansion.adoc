@@ -22,6 +22,7 @@ CSI プロビジョニングを使用して、 iSCSI Persistent Volume （ PV �
 
 NOTE: iSCSIボリューム拡張は、でサポートされます `ontap-san`、 `ontap-san-economy`、 `solidfire-san` ドライバとにはKubernetes 1.16以降が必要です。
 
+.概要
 iSCSI PV の拡張には、次の手順が含まれます。
 
 * StorageClass定義を編集してを設定します `allowVolumeExpansion` フィールドからに移動します `true`。

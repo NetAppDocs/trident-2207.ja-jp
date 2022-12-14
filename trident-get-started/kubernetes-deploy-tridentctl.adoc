@@ -19,6 +19,7 @@ TIP: をまだ理解していない場合は、を参照してください link:
 
 TIP: 展開をカスタマイズするには、を参照してください link:kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"^]。
 
+.必要なもの
 Astra Trident を導入するには、次の前提条件を満たしている必要があります。
 
 * サポート対象の Kubernetes クラスタに対するすべての権限が必要です。

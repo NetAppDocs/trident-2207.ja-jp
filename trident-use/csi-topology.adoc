@@ -25,6 +25,7 @@ Kubernetes には、 2 つの固有のボリュームバインドモードがあ
 
 NOTE: 。 `WaitForFirstConsumer` バインディングモードでは、トポロジラベルは必要ありません。これは CSI トポロジ機能とは無関係に使用できます。
 
+.必要なもの
 CSI トポロジを使用するには、次のものが必要です。
 
 * 1.19 ~ 1.24を実行するKubernetesクラスタ。
@@ -250,7 +251,7 @@ pvc-san   Bound    pvc-ecb1e1a0-840c-463b-8b65-b3d033e2e62b   300Mi      RWO    
 ----
 
 
-== バックエンドを更新して supportedTopologies を追加します
+== バックエンドを更新して追加 `supportedTopologies`
 
 既存のバックエンドを更新して、のリストを追加することができます `supportedTopologies` を使用します `tridentctl backend update`。これは、すでにプロビジョニングされているボリュームには影響せず、以降の PVC にのみ使用されます。
 

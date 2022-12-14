@@ -91,7 +91,7 @@ TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/
 
 
 
-== ステップ 1 ：ボリューム Snapshot クラスをセットアップする
+== 手順1：を設定します `VolumeSnapshotClass`
 
 ボリュームSnapshotを作成する前に、リンク./trident-reference/objects.htmlを設定します[`VolumeSnapshotClass`^]をクリックします。
 

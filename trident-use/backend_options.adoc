@@ -19,7 +19,7 @@ Astra Trident でバックエンドを管理するさまざまな方法をご確
 
 
 
-== TridentBackendConfig を使用して tridentctl バックエンドを管理します
+== 管理 `tridentctl` を使用してバックエンドを `TridentBackendConfig`
 
 このセクションでは、を使用して作成したバックエンドを管理するために必要な手順について説明します `tridentctl` を作成し、Kubernetesインターフェイスから直接実行 `TridentBackendConfig` オブジェクト。
 
@@ -120,7 +120,7 @@ secret/backend-tbc-ontap-san-secret created
 ----
 
 
-=== 手順 2 ： TridentBackendConfig CR を作成します
+=== 手順2：を作成します `TridentBackendConfig` CR
 
 次の手順では、を作成します `TridentBackendConfig` 既存のに自動的にバインドされるCR `ontap-nas-backend` （この例のように）。次の要件が満たされていることを確認します。
 
@@ -177,7 +177,7 @@ tridentbackendconfig.trident.netapp.io/tbc-ontap-nas-backend created
 ----
 
 
-=== 手順 3 ： TridentBackendConfig CR のステータスを確認します
+=== 手順3：のステータスを確認します `TridentBackendConfig` CR
 
 のあとに入力します `TridentBackendConfig` が作成されている必要があります `Bound`。また、既存のバックエンドと同じバックエンド名と UUID が反映されている必要があります。
 
@@ -199,7 +199,7 @@ tridentctl get backend -n trident
 
 
 
-== tridentctl を使用して TridentBackendConfig バックエンドを管理します
+== 管理 `TridentBackendConfig` を使用してバックエンドを `tridentctl`
 
  `tridentctl` を使用して、を使用して作成されたバックエンドを表示できます `TridentBackendConfig`。また、管理者は、を使用してこのようなバックエンドを完全に管理することもできます `tridentctl` 削除します `TridentBackendConfig` そして確かめなさい `spec.deletionPolicy` がに設定されます `retain`。
 
@@ -226,7 +226,7 @@ tridentctl get backend ontap-san-backend -n trident
 
 
 
-=== 手順 1 ：削除ポリシーが retain に設定されていることを確認します
+=== 手順1：確認します `deletionPolicy` がに設定されます `retain`
 
 では、の価値を見てみましょう `deletionPolicy`。これはに設定する必要があります `retain`。これにより、が確実に実行されます `TridentBackendConfig` CRが削除され、バックエンド定義は引き続き存在し、で管理できます `tridentctl`。
 
@@ -250,7 +250,7 @@ NOTE: それ以外の場合は、次の手順に進まないでください `del
 
 
 
-=== 手順 2 ： TridentBackendConfig CR を削除します
+=== 手順2：を削除します `TridentBackendConfig` CR
 
 最後の手順は、を削除することです `TridentBackendConfig` CR。確認が完了したら `deletionPolicy` がに設定されます `retain`をクリックすると、次のように削除されます。
 

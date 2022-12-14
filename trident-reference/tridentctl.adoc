@@ -58,7 +58,7 @@ CAUTION: Trident REST インターフェイスは、 127.0.0.1 （ IPv4 の場�
 
 
 
-== 作成
+== `create`
 
 を実行します `create` Astra Tridentにリソースを追加するコマンド。
 
@@ -72,7 +72,7 @@ Usage:
 
 
 
-== 削除
+== `delete`
 
 を実行できます `delete` コマンドを使用して、Astra Tridentから1つ以上のリソースを削除します。
 
@@ -91,7 +91,7 @@ Usage:
 
 
 
-== 取得
+== `get`
 
 を実行できます `get` Astra Tridentから1つ以上のリソースを取得するためのコマンドです。
 
@@ -110,7 +110,7 @@ Usage:
 
 
 
-== イメージ
+== `images`
 
 を実行できます `images` Astra Tridentが必要とするコンテナイメージの表を印刷するためのフラグ。
 
@@ -124,7 +124,7 @@ Usage:
 
 
 
-== ボリュームをインポートします
+== `import volume`
 
 を実行できます `import volume` コマンドを使用して、既存のボリュームをAstra Tridentにインポートします。
 
@@ -145,7 +145,7 @@ Usage:
 
 
 
-== をインストールします
+== `install`
 
 を実行できます `install` Astra Tridentのインストールにフラグを付けます。
 
@@ -178,7 +178,7 @@ Usage:
 
 
 
-== ログ
+== `logs`
 
 を実行できます `logs` Astra Tridentからログを印刷するためのフラグ。
 
@@ -199,7 +199,7 @@ Usage:
 
 
 
-== 送信
+== `send`
 
 を実行できます `send` Astra Tridentからリソースを送信するコマンド。
 
@@ -213,7 +213,7 @@ Usage:
 
 
 
-== をアンインストールします
+== `uninstall`
 
 を実行できます `uninstall` Astra Tridentをアンインストールするためのフラグ。
 
@@ -226,7 +226,7 @@ Usage:
 
 
 
-== 更新
+== `update`
 
 を実行できます `update` Astra Tridentのリソースを変更するコマンド。
 
@@ -240,7 +240,7 @@ Usage:
 
 
 
-== アップグレード
+== `upgrade`
 
 を実行できます `upgrade` Astra Tridentのリソースをアップグレードするためのコマンド。
 
@@ -254,7 +254,7 @@ tridentctl upgrade [option]
 
 
 
-== バージョン
+== `version`
 
 を実行できます `version` のバージョンを印刷するためのフラグ `tridentctl` 実行中のTridentサービス
 
