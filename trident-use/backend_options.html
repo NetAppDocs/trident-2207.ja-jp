@@ -1519,7 +1519,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-10-25 16:20:42 +0000">10/25/2022</time>
+    <time datetime="2022-12-14 18:25:57 +0000">12/14/2022</time>
     
   
 
@@ -1547,7 +1547,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="tridentbackendconfig-を使用して-tridentctl-バックエンドを管理します">TridentBackendConfig を使用して tridentctl バックエンドを管理します</h2>
+<h2 id="管理-tridentctl-を使用してバックエンドを-tridentbackendconfig">管理 <code>tridentctl</code> を使用してバックエンドを <code>TridentBackendConfig</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>このセクションでは、を使用して作成したバックエンドを管理するために必要な手順について説明します <code>tridentctl</code> を作成し、Kubernetesインターフェイスから直接実行 <code>TridentBackendConfig</code> オブジェクト。</p>
@@ -1671,7 +1671,7 @@ secret/backend-tbc-ontap-san-secret created</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="手順-2-tridentbackendconfig-cr-を作成します">手順 2 ： TridentBackendConfig CR を作成します</h3>
+<h3 id="手順2を作成します-tridentbackendconfig-cr">手順2：を作成します <code>TridentBackendConfig</code> CR</h3>
 <div class="paragraph">
 <p>次の手順では、を作成します <code>TridentBackendConfig</code> 既存のに自動的にバインドされるCR <code>ontap-nas-backend</code> （この例のように）。次の要件が満たされていることを確認します。</p>
 </div>
@@ -1740,7 +1740,7 @@ tridentbackendconfig.trident.netapp.io/tbc-ontap-nas-backend created</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="手順-3-tridentbackendconfig-cr-のステータスを確認します">手順 3 ： TridentBackendConfig CR のステータスを確認します</h3>
+<h3 id="手順3のステータスを確認します-tridentbackendconfig-cr">手順3：のステータスを確認します <code>TridentBackendConfig</code> CR</h3>
 <div class="paragraph">
 <p>のあとに入力します <code>TridentBackendConfig</code> が作成されている必要があります <code>Bound</code>。また、既存のバックエンドと同じバックエンド名と UUID が反映されている必要があります。</p>
 </div>
@@ -1766,7 +1766,7 @@ tridentctl get backend -n trident
 </div>
 </div>
 <div class="sect1">
-<h2 id="tridentctl-を使用して-tridentbackendconfig-バックエンドを管理します">tridentctl を使用して TridentBackendConfig バックエンドを管理します</h2>
+<h2 id="管理-tridentbackendconfig-を使用してバックエンドを-tridentctl">管理 <code>TridentBackendConfig</code> を使用してバックエンドを <code>tridentctl</code></h2>
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
@@ -1797,7 +1797,7 @@ tridentctl get backend ontap-san-backend -n trident
 </div>
 </div>
 <div class="sect2">
-<h3 id="手順-1-削除ポリシーが-retain-に設定されていることを確認します">手順 1 ：削除ポリシーが retain に設定されていることを確認します</h3>
+<h3 id="手順1確認します-deletionpolicy-がに設定されます-retain">手順1：確認します <code>deletionPolicy</code> がに設定されます <code>retain</code></h3>
 <div class="paragraph">
 <p>では、の価値を見てみましょう <code>deletionPolicy</code>。これはに設定する必要があります <code>retain</code>。これにより、が確実に実行されます <code>TridentBackendConfig</code> CRが削除され、バックエンド定義は引き続き存在し、で管理できます <code>tridentctl</code>。</p>
 </div>
@@ -1831,7 +1831,7 @@ backend-tbc-ontap-san   ontap-san-backend   81abcb27-ea63-49bb-b606-0a5315ac5f82
 </div>
 </div>
 <div class="sect2">
-<h3 id="手順-2-tridentbackendconfig-cr-を削除します">手順 2 ： TridentBackendConfig CR を削除します</h3>
+<h3 id="手順2を削除します-tridentbackendconfig-cr">手順2：を削除します <code>TridentBackendConfig</code> CR</h3>
 <div class="paragraph">
 <p>最後の手順は、を削除することです <code>TridentBackendConfig</code> CR。確認が完了したら <code>deletionPolicy</code> がに設定されます `retain`をクリックすると、次のように削除されます。</p>
 </div>
