@@ -1519,7 +1519,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-10-25 16:20:42 +0000">10/25/2022</time>
+    <time datetime="2023-01-03 17:12:04 +0000">01/03/2023</time>
     
   
 
@@ -1559,7 +1559,7 @@
 <p>ほとんどの項目はバックエンド固有の用語で指定されます。アスペクト値は、バックエンドのドライバの外部には表示されず、での照合には使用できません <code>StorageClasses</code>。代わりに、管理者が各仮想プールに 1 つ以上のラベルを定義します。各ラベルはキー：値のペアで、ラベルは一意のバックエンド間で共通です。側面と同様に、ラベルはプールごとに指定することも、バックエンドに対してグローバルに指定することもできます。名前と値があらかじめ定義されている側面とは異なり、管理者は必要に応じてラベルキーと値を定義する完全な裁量を持っています。</p>
 </div>
 <div class="paragraph">
-<p>A <code>StorageClass</code> セレクタパラメータ内のラベルを参照して、使用する仮想プールを指定します。仮想プールセレクタは、 6 つの演算子をサポートします。</p>
+<p>A <code>StorageClass</code> セレクタパラメータ内のラベルを参照して、使用する仮想プールを指定します。仮想プールセレクタでは、次の演算子がサポートされます。</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1571,29 +1571,39 @@
 <tr>
 <th class="tableblock halign-left valign-top">演算子</th>
 <th class="tableblock halign-left valign-top">例</th>
-<th class="tableblock halign-left valign-top">説明</th>
+<th class="tableblock halign-left valign-top">プールのラベル値は次のとおりです。</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>=</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">パフォーマンス = プレミアム</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">プールのラベル値は一致している必要があります</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">一致</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>!=</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">パフォーマンス！ = 非常に優れています</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">プールのラベル値が一致していない必要があります</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">一致しません</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>in</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">場所（東部、西部）</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">プールのラベル値は一連の値にする必要があります</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">値のセットに含まれています</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notin</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">パフォーマンス記名（シルバー、ブロンズ）</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">プールのラベル値は b にできません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">値のセットに含まれていません</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;key&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保護</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">任意の値で存在します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>!&lt;key&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">!保護</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">存在しません</p></td>
 </tr>
 </tbody>
 </table>
