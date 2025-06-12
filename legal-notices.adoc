@@ -1,13 +1,13 @@
 ---
 sidebar: sidebar 
-permalink: legal.html 
+permalink: legal-notices.html 
 keywords:  
 summary:  
 ---
 = 法的通知
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]
@@ -45,4 +45,6 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 == オープンソース
 
-ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます https://github.com/NetApp/trident/[]。
+通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。
+
+https://github.com/NetApp/trident/[]です。
